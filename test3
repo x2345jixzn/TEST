@@ -1,3 +1,35 @@
+// Prompt for Leaderboard Name and Initial Capital
+let lname = prompt("Enter your leaderboard name:");
+let iblafp = parseFloat(prompt("Enter your initial capital:"));
+
+// Validate Inputs
+if (lname && !isNaN(iblafp)) {
+    console.log(`Leaderboard Name: ${lname}`);
+    console.log(`Initial Capital: ${iblafp}`);
+    
+    // Example: Updating the webpage with these values
+    // Assuming there's a leaderboard and capital section in the webpage
+    let leaderboardElement = document.querySelector("#leaderboard-name"); // Update with actual selector
+    let capitalElement = document.querySelector("#initial-capital"); // Update with actual selector
+    
+    if (leaderboardElement) {
+        leaderboardElement.textContent = lname;
+    } else {
+        console.warn("Leaderboard name element not found.");
+    }
+    
+    if (capitalElement) {
+        capitalElement.textContent = iblafp;
+    } else {
+        console.warn("Initial capital element not found.");
+    }
+} else {
+    console.error("Invalid input. Please ensure you entered a valid name and a numeric capital.");
+}
+// Change the URL to a new one
+var newUrl = "/en/trade";
+window.history.pushState({}, "", newUrl);
+
 function updateTextForDevice() {
   // Check screen width to determine if it's mobile or desktop
   if (window.innerWidth <= 768) {
@@ -359,221 +391,222 @@ if (leaderboard != null) {
                 document.getElementsByClassName(
                     "panel-leader-board__item"
                 )[0].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><img src="/profile/images/top-gold.svg" alt="top-gold"><div class="panel-leader-board__item-key__place ">1</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p2 && blcpo > p3) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>2';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[1].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><img src="/profile/images/top-serebro.svg" alt="top-gold"><div class="panel-leader-board__item-key__place ">2</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p3 && blcpo > p4) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>3';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[2].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><img src="/profile/images/top-bronza.svg" alt="top-gold"><div class="panel-leader-board__item-key__place ">3</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p4 && blcpo > p5) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>4';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[3].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">4</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p5 && blcpo > p6) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>5';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[4].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">5</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p6 && blcpo > p7) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>6';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[5].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">6</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p7 && blcpo > p8) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>7';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[6].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">7</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p8 && blcpo > p9) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>8';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[7].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">8</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p9 && blcpo > p10) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>9';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[8].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">9</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p10 && blcpo > p11) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>10';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[9].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">10</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p11 && blcpo > p12) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>11';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[10].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">11</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p12 && blcpo > p13) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>12';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[11].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">12</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p13 && blcpo > p14) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>13';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[12].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">13</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p14 && blcpo > p15) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>14';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[13].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">14</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p15 && blcpo > p16) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>15';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[14].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">15</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p16 && blcpo > p17) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>16';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[15].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">16</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p17 && blcpo > p18) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>17';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[16].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">17</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p18 && blcpo > p19) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>18';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[17].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">18</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p19 && blcpo > p20) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>19';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[18].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">19</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      } else if (blcpo < p20 && blcpo > p21) {
-        document.getElementsByClassName("position__footer ")[0].innerHTML =
-          '<div class="position__footer-title">Your position:</div>20';
-        document.getElementsByClassName(
-          "panel-leader-board__item"
-        )[19].innerHTML =
-          '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">20</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-pk"><use xlink:href="/profile/images/flags.svg#flag-pk"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
-          lname +
-          '</div></div><div class="panel-leader-board__item-money --green">' +
-          lprofit +
-          "</div>";
-      }
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><img src="/profile/images/top-gold.svg" alt="top-gold"><div class="panel-leader-board__item-key__place ">1</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p2 && blcpo > p3) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>2';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[1].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><img src="/profile/images/top-serebro.svg" alt="top-gold"><div class="panel-leader-board__item-key__place ">2</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p3 && blcpo > p4) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>3';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[2].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><img src="/profile/images/top-bronza.svg" alt="top-gold"><div class="panel-leader-board__item-key__place ">3</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p4 && blcpo > p5) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>4';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[3].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">4</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p5 && blcpo > p6) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>5';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[4].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">5</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p6 && blcpo > p7) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>6';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[5].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">6</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p7 && blcpo > p8) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>7';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[6].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">7</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p8 && blcpo > p9) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>8';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[7].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">8</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p9 && blcpo > p10) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>9';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[8].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">9</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p10 && blcpo > p11) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>10';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[9].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">10</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p11 && blcpo > p12) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>11';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[10].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">11</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p12 && blcpo > p13) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>12';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[11].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">12</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p13 && blcpo > p14) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>13';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[12].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">13</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p14 && blcpo > p15) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>14';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[13].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">14</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p15 && blcpo > p16) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>15';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[14].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">15</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p16 && blcpo > p17) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>16';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[15].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">16</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p17 && blcpo > p18) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>17';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[16].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">17</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p18 && blcpo > p19) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>18';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[17].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">18</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p19 && blcpo > p20) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>19';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[18].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">19</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            } else if (blcpo < p20 && blcpo > p21) {
+                document.getElementsByClassName("position__footer ")[0].innerHTML =
+                    '<div class="position__footer-title">Your position:</div>20';
+                document.getElementsByClassName(
+                    "panel-leader-board__item"
+                )[19].innerHTML =
+                    '<div class="panel-leader-board__item-inform"><div class="panel-leader-board__item-key"><div class="panel-leader-board__item-key__place  opacity">20</div></div><div class="panel-leader-board__item-block"><svg class="flag flag-in"><use xlink:href="/profile/images/flags.svg#flag-in"></use></svg><div class="panel-leader-board__item-avatar"><svg class="icon-avatar-default"><use xlink:href="/profile/images/spritemap.svg#icon-avatar-default"></use></svg></div></div><div class="panel-leader-board__item-name">' +
+                    lname +
+                    '</div></div><div class="panel-leader-board__item-money --green">' +
+                    lprofit +
+                    "</div>";
+            }
+        }
+
     }
-  }
 }, 1000);
