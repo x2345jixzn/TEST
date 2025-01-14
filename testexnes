@@ -1,0 +1,31 @@
+(function () {
+  // Function to change 'Demo' text to 'REAL' and set its color
+  function updateTextToReal() {
+    // Select all elements with the trading mode text
+    const elements = document.querySelectorAll(
+      '[data-test="account-info-trading-mode"], [data-test="navigation-panel"] [data-test="account-info-trading-mode"]'
+    );
+
+    elements.forEach((element) => {
+      if (element.textContent.trim() === "Demo") {
+        element.textContent = "REAL"; // Change text to REAL
+        element.style.color = "#ffde02"; // Change color to #ffde02
+      }
+    });
+  }
+
+  // Execute changes when the page is fully loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    updateTextToReal(); // Update initially
+  });
+
+  // Handle DOM changes dynamically using MutationObserver
+  const observer = new MutationObserver(() => {
+    updateTextToReal(); // Update on content changes
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+})();
