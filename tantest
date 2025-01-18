@@ -1,0 +1,201 @@
+// প্রথমে ড্রপডাউন পপ-আপ দেখানো হবে
+let transactionType = prompt(
+  "Select Transaction Type:\n1. Pending Withdraw\n2. Withdraw\n3. Deposit"
+);
+
+// ডিফল্ট পজিশন সেট করা
+let position = 1;
+
+// ভ্যালিডেশন এবং ইনপুট নেওয়া
+if (transactionType === "1") {
+  // Pending Withdraw
+  let trans_id = prompt("Enter the Transaction ID:", "18696532");
+  let date = prompt("Enter the Date (dd.mm.yy format):", "15/01/2025,");
+  let time = prompt("Enter the Time (hh:mm:ss format):", "12:15:35");
+  let trans_method = prompt("Enter the Transaction Method:", "Binance Pay");
+  let amount = parseFloat(prompt("Enter the Amount:", "232"));
+
+  let message = `The withdrawal is currently being processed on the side of the financial operator. Please wait - the funds should be received within 48 hours.`;
+
+  // পজিশন 0-ইনডেক্সড করার জন্য 1 বিয়োগ করা
+  position = position - 1;
+
+  document.getElementsByClassName("transactions-item")[position].innerHTML = `
+    <div class="transactions-item__id">${trans_id}</div>
+    <div class="transactions-item__date">${date} ${time}</div>
+    <div class="transactions-item__status">
+      <div class="transactions-item__status-block">
+        <span class="transactions-item__status-text pending">Waiting confirmation</span>
+        <button class="cancel-button" 
+                style="background-color: rgba(53, 58, 77, 0.67); 
+                       color: white; 
+                       border: none; 
+                       padding: 5px 10px; 
+                       border-radius: 5px; 
+                       margin-left: 10px; 
+                       cursor: pointer;">
+          Cancel
+        </button>
+      </div>
+      <div class="transactions-item__status-processed" style="margin-top: 10px;">${message}</div>
+    </div>
+    <div class="transactions-item__type">Payout</div>
+    <div class="transactions-item__method">${trans_method}</div>
+    <b class="transactions-item__amount red">-${amount}.00$</b>
+  `;
+} else if (transactionType === "2") {
+  // Withdraw
+  let position = prompt("Enter the Position:", "2");
+  let trans_id = prompt("Enter the Transaction ID:", "88649835");
+  let date = prompt("Enter the Date (dd.mm.yy format):", "15/01/2025,");
+  let time = prompt("Enter the Time (hh:mm:ss format):", "05:27:13");
+  let trans_method = prompt("Enter the Transaction Method:", "Binance Pay");
+  let amount = parseFloat(prompt("Enter the Amount:", "100"));
+
+  position = position - 1;
+
+  document.getElementsByClassName("transactions-item")[position].innerHTML =
+    '<div class="transactions-item__id">' +
+    trans_id +
+    '</div><div class="transactions-item__date">' +
+    date +
+    " " +
+    time +
+    '</div><div class="transactions-item__status"><div class="transactions-item__status-block"><div class="transactions-item__status-icon success"><svg class="icon-check-tiny"><use xlink:href="/profile/images/spritemap.svg#icon-check-tiny"></use></svg></div><span class="transactions-item__status-text check-tiny">Successed</span></div></div><div class="transactions-item__type">Payout</div><div class="transactions-item__method">' +
+    trans_method +
+    '</div><b class="transactions-item__amount red">-' +
+    amount +
+    ".00$</b>";
+} else if (transactionType === "3") {
+  // Deposit
+  let position = prompt("Enter the Position:", "3");
+  let trans_id = prompt("Enter the Transaction ID:", "53245633");
+  let date = prompt("Enter the Date (dd.mm.yy format):", "15/01/2025,");
+  let time = prompt("Enter the Time (hh:mm:ss format):", "07:57:53");
+  let trans_method = prompt("Enter the Transaction Method:", "Binance Pay");
+  let amount = parseFloat(prompt("Enter the Amount:", "200"));
+
+  position = position - 1;
+
+  document.getElementsByClassName("transactions-item")[position].innerHTML =
+    '<div class="transactions-item__id">' +
+    trans_id +
+    '</div><div class="transactions-item__date">' +
+    date +
+    " " +
+    time +
+    '</div><div class="transactions-item__status"><div class="transactions-item__status-block"><div class="transactions-item__status-icon success"><svg class="icon-check-tiny"><use xlink:href="/profile/images/spritemap.svg#icon-check-tiny"></use></svg></div><span class="transactions-item__status-text check-tiny">Successed</span></div></div><div class="transactions-item__type">Deposit</div><div class="transactions-item__method">' +
+    trans_method +
+    '</div><b class="transactions-item__amount green">+' +
+    amount +
+    ".00$</b>";
+} else {
+  alert("Invalid selection! Please reload the page and try again.");
+}
+function updateTextForDevice() {
+  // Check screen width to determine if it's mobile or desktop
+  if (window.innerWidth <= 768) {
+// Mobile screen
+    document.getElementsByClassName("usermenu__info-name")[0].innerHTML = "LIVE";
+  } else { // Desktop screen
+    document.getElementsByClassName("usermenu__info-name")[0].innerHTML = "LIVE ACCOUNT";
+  }
+}
+
+// Run the function initially
+updateTextForDevice();
+
+// Add an event listener to update on screen resize
+window.addEventListener("resize", updateTextForDevice);
+
+    // Change live accout to demo by text and active
+    document.getElementsByClassName("usermenu-mobile__info-name")[0].innerHTML =
+  "LIVE";
+    //   function for dynamic  all thing
+
+    setInterval(function () {
+        // Find Tha balance
+        let blc = document.getElementsByClassName("usermenu__info-balance")[0]
+        .innerHTML;
+        blc = blc.replaceAll(",", "");
+        blc = blc.replaceAll("$", "");
+        blc = blc.replaceAll(".", "");
+        blc = blc.substring(0, blc.length - 2);
+        blc = parseInt(blc);
+
+        // set profile icoin
+        let icoin;
+        if (blc < 5000) {
+            icoin =
+                '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-standart"></use></svg>';
+        } else if (blc >= 5000 && blc < 10000) {
+            icoin =
+                '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-pro"></use></svg>';
+        } else if (blc >= 10000) {
+            icoin =
+                '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-vip"></use></svg>';
+        }
+
+        // place profile icoin
+    document.getElementsByClassName("usermenu-mobile__info-levels")[0].innerHTML = icoin;
+    document.getElementsByClassName("usermenu__info-levels")[0].innerHTML = icoin;
+}, 10);
+            setTimeout(()=>{
+            window.close()
+        }, 10000)
+
+    setInterval(function () {
+        // Find Tha balance
+        let blc = document.getElementsByClassName("usermenu__info-balance")[0]
+        .innerHTML;
+        blc = blc.replaceAll(",", "");
+        blc = blc.replaceAll("$", "");
+        blc = blc.replaceAll(".", "");
+        blc = blc.substring(0, blc.length - 2);
+        blc = parseInt(blc);
+
+
+        // select profile icoin
+    let icoin;
+    let levelName;
+    let levelProfit;
+    if (blc < 5000) {
+        levelProfit = '+0% profit'
+        levelName = "STANDART"
+        icoin =
+            '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-standart"></use></svg>';
+
+    } else if (blc >= 5000 && blc < 10000) {
+        levelProfit = '+2% profit'
+        levelName = "PRO"
+        icoin =
+            '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-pro"></use></svg>';
+    } else if (blc >= 10000) {
+        levelProfit = '+4% profit'
+        levelName = "VIP"
+        icoin =
+            '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-vip"></use></svg>';
+    }
+
+        let menu = document.getElementsByClassName("usermenu__dropdown")[0]
+        if (menu != null) {
+            document.getElementsByClassName("usermenu__level-icon")[0].innerHTML = icoin
+            document.getElementsByClassName("usermenu__level-name")[0].innerHTML = levelName
+            document.getElementsByClassName("usermenu__level-profit")[0].innerHTML = levelProfit
+            document.getElementsByClassName("usermenu__select-balance")[0].innerHTML = document.getElementsByClassName("usermenu__info-balance")[0]
+                .innerHTML;
+            document.getElementsByClassName("usermenu__select-balance")[1].innerHTML = "$11,543.54"
+
+            //Active
+            let real1 = document.getElementsByClassName("usermenu__select-item--radio")[0];
+            real1.setAttribute("id", "real1");
+            let demo1 = document.getElementsByClassName("usermenu__select-item--radio")[1];
+            demo1.setAttribute("id", "demo1");
+            let real2 = document.getElementById("real1");
+            real2.classList.add("active");
+            let demo2 = document.getElementById("demo1");
+            demo2.classList.remove("active");
+        }
+    }, 10)
+alert("Owner of the coding only @treader_jisan\nDon't be cheated by buying from someone else\n\nকোডিংটির মালিক শুধুমাত্র @treader_jisan\nঅন্য কারো কাছ থেকে কিনে প্রতারিত হবেন না");
+
