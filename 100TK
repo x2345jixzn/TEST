@@ -5,16 +5,6 @@ window.history.pushState({}, "", newUrl);
 // Change live accout to demo by text and active
 document.getElementsByClassName("usermenu__info-name")[0].innerHTML =
   "LIVE";
-
-let elm1 = document.getElementsByClassName("sidebar__button")[0];
-elm1.setAttribute("id", "real");
-let elm2 = document.getElementsByClassName("sidebar__button")[3];
-elm2.setAttribute("id", "demo");
-let eler = document.getElementById("real");
-eler.classList.toggle("active");
-let eled = document.getElementById("demo");
-eled.classList.toggle("active");
-
 //   function for dynamic  all thing
 
 setInterval(function () {
