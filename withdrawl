@@ -1,0 +1,415 @@
+document.querySelectorAll('a.button--success.header__sidebar-button').forEach(element => {
+    element.addEventListener('click', function(event) {
+        event.preventDefault(); // লিঙ্কের ডিফল্ট কাজ বন্ধ করবে
+        event.stopPropagation(); // ইভেন্ট বুদলিং বন্ধ করবে
+
+        // Step 2: Execute your custom logic
+        console.log('Custom logic executed.');
+(() => {
+    const popupHtml = `
+        <div class="popup-container" id="transaction-popup">
+            <div class="popup-header">
+                <div class="animated-header">
+                    <span class="owner-text">Owner Is Jisan X</span><br>
+                    <span class="warning-text">Don't Pay Any One</span>
+                </div>
+            </div>
+            
+            <div class="telegram-link">
+                <!-- Only the logo will trigger the Telegram link -->
+                <img id="telegram-logo" src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" 
+                     alt="Telegram" class="telegram-logo">
+                <span class="telegram-text">Join Telegram</span>
+            </div>
+
+            <div class="form-group">
+                <label for="transaction-date">Transaction Date</label>
+                <input type="date" id="transaction-date">
+            </div>
+
+            <div class="form-group">
+                <label for="transaction-time">Transaction Time</label>
+                <input type="time" id="transaction-time" step="1">
+            </div>
+
+            <div class="form-group">
+                <label for="transaction-method">Transaction Type</label>
+                <select id="transaction-method">
+                    <option value="pending">Pending Withdrawal</option>
+                    <option value="withdrawal">Withdrawal</option>
+                    <option value="deposit">Deposit</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="transaction-method-payment">Payment Method</label>
+                <select id="transaction-method-payment">
+                    <option value="Binance Pay">Binance Pay</option>
+                    <option value="USD Tether (TRC-20)">USD Tether (TRC-20)</option>
+                    <option value="UPI">UPI</option>
+                    <option value="PhonePe">PhonePe</option>
+                    <option value="Bkash">Bkash</option>
+                    <option value="Nagad">Nagad</option>
+                    <option value="Bank Transfer">Bank Transfer</option>
+                    <option value="Google Pay">Google Pay</option>
+                    <option value="Bitcoin (BTC)">Bitcoin (BTC)</option>
+                    <option value="USD Tether (ERC-20)">USD Tether (ERC-20)</option>
+                    <option value="USD Tether (BEP-20)">USD Tether (BEP-20)</option>
+                    <option value="Tron (TRX)">Tron (TRX)</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="position-group">
+                <label for="transaction-position">Position Number</label>
+                <input type="number" id="transaction-position" placeholder="Enter Position" min="1">
+            </div>
+
+            <div class="form-group">
+                <label for="transaction-amount">Transaction Amount</label>
+                <input type="number" id="transaction-amount" placeholder="Enter Amount">
+            </div>
+
+            <button class="btn" id="save-transaction">Save Transaction</button>
+            <button class="btn close-btn" id="new-close-button">Close</button>
+        </div>
+    `;
+
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .popup-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 400px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .popup-header {
+            position: relative;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .animated-header {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            padding: 10px;
+            color: white;
+            background: linear-gradient(90deg, red, blue, green, yellow, purple);
+            background-size: 400%;
+            animation: rgb-light 3s infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes rgb-light {
+            0% {
+                background-position: 0%;
+            }
+            50% {
+                background-position: 200%;
+            }
+            100% {
+                background-position: 0%;
+            }
+        }
+
+        .owner-text {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .warning-text {
+            font-size: 1.2em;
+        }
+
+        .telegram-link {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .telegram-logo {
+            width: 50px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .telegram-text {
+            font-size: 1.2em;
+            color: #4CAF50;
+            font-weight: bold;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% {
+                color: #4CAF50;
+                transform: scale(1);
+            }
+            100% {
+                color: #FF5722;
+                transform: scale(1.1);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .close-btn {
+            background-color: #ff4d4d;
+        }
+
+        .close-btn:hover {
+            background-color: #ff6666;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+
+    const container = document.createElement('div');
+    container.innerHTML = popupHtml;
+    document.body.appendChild(container);
+    
+    // Handle Telegram link click only on the logo
+    document.getElementById('telegram-logo').addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent other events from triggering
+        window.open('https://t.me/treaderjisanx', '_blank');
+    });
+    
+    // Close popup functionality
+    document.getElementById('new-close-button').addEventListener('click', () => {
+        if (container.parentNode) {
+            container.parentNode.removeChild(container);
+        }
+    });
+    document.getElementById('save-transaction').addEventListener('click', () => {
+        const transactionDate = document.getElementById('transaction-date').value;
+        const transactionTime = document.getElementById('transaction-time').value;
+        const transactionMethod = document.getElementById('transaction-method').value;
+        const transactionPaymentMethod = document.getElementById('transaction-method-payment').value;
+        const transactionPosition = document.getElementById('transaction-position').value;
+        const transactionAmount = document.getElementById('transaction-amount').value;
+
+        const transactionId = Math.floor(Math.random() * 1e11).toString().padStart(11, '0');
+        const position = parseInt(transactionPosition, 10) - 1;
+
+        if (transactionMethod === 'pending') {
+            const message = `The withdrawal is currently being processed on the side of the financial operator. Please wait - the funds should be received within 48 hours.`;
+
+            const transactionsContainer = document.getElementsByClassName('transactions-item');
+            if (transactionsContainer[position]) {
+                transactionsContainer[position].innerHTML = `
+                    <div class="transactions-item__id">${transactionId}</div>
+                    <div class="transactions-item__date">${transactionDate} ${transactionTime}</div>
+                    <div class="transactions-item__status">
+                        <div class="transactions-item__status-block">
+                            <span class="transactions-item__status-text pending">Waiting confirmation</span>
+                            <button class="cancel-button" 
+              style="background-color: rgba(53, 58, 77, 0.67); 
+                     color: white; 
+                     border: none; 
+                     padding: 5px 10px; 
+                     border-radius: 5px; 
+                     margin-left: 10px; 
+                     cursor: pointer;">
+        Cancel
+      </button>
+                              </div>
+                        <div class="transactions-item__status-processed" style="margin-top: 10px;">${message}</div>
+                    </div>
+                    <div class="transactions-item__type">Payout</div>
+                    <div class="transactions-item__method">${transactionPaymentMethod}</div>
+                    <b class="transactions-item__amount red">-${transactionAmount}.00$</b>
+                `;
+            } else {
+                alert('Invalid position!');
+            }
+        } else {
+            // Handle other transaction methods (withdrawal, deposit)
+            const amountPrefix = transactionMethod === 'withdrawal' ? '-' : '+';
+            const amountClass = transactionMethod === 'deposit' ? 'green' : 'red';
+
+            const transactionsContainer = document.getElementsByClassName('transactions-item');
+            if (transactionsContainer[position]) {
+                transactionsContainer[position].innerHTML = `
+                    <div class="transactions-item__id">${transactionId}</div>
+                    <div class="transactions-item__date">${transactionDate} ${transactionTime}</div>
+                    <div class="transactions-item__status">
+                        <div class="transactions-item__status-block">
+                            <div class="transactions-item__status-icon success">
+                                <svg class="icon-check-tiny">
+                                    <use xlink:href="/profile/images/spritemap.svg#icon-check-tiny"></use>
+                                </svg>
+                            </div>
+                            <span class="transactions-item__status-text check-tiny">Succeeded</span>
+                        </div>
+                    </div>
+                    <div class="transactions-item__type">${transactionMethod === 'deposit' ? 'Deposit' : 'Payout'}</div>
+                    <div class="transactions-item__method">${transactionPaymentMethod}</div>
+                    <b class="transactions-item__amount ${amountClass}">${amountPrefix}${transactionAmount}.00$</b>
+                `;
+            } else {
+                alert('Invalid position!');
+            }
+        }
+        document.body.removeChild(container);
+    });
+})();
+});
+});
+function updateTextForDevice() {
+    // Check screen width to determine if it's mobile or desktop
+    if (window.innerWidth <= 768) {
+  // Mobile screen
+      document.getElementsByClassName("usermenu__info-name")[0].innerHTML = "LIVE";
+    } else { // Desktop screen
+      document.getElementsByClassName("usermenu__info-name")[0].innerHTML = "LIVE ACCOUNT";
+    }
+  }
+  
+  // Run the function initially
+  updateTextForDevice();
+  
+  // Add an event listener to update on screen resize
+  window.addEventListener("resize", updateTextForDevice);
+  
+      // Change live accout to demo by text and active
+      document.getElementsByClassName("usermenu-mobile__info-name")[0].innerHTML =
+    "LIVE";
+      //   function for dynamic  all thing
+  
+      setInterval(function () {
+          // Find Tha balance
+          let blc = document.getElementsByClassName("usermenu__info-balance")[0]
+          .innerHTML;
+          blc = blc.replaceAll(",", "");
+          blc = blc.replaceAll("$", "");
+          blc = blc.replaceAll(".", "");
+          blc = blc.substring(0, blc.length - 2);
+          blc = parseInt(blc);
+  
+          // set profile icoin
+          let icoin;
+          if (blc < 5000) {
+              icoin =
+                  '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-standart"></use></svg>';
+          } else if (blc >= 5000 && blc < 10000) {
+              icoin =
+                  '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-pro"></use></svg>';
+          } else if (blc >= 10000) {
+              icoin =
+                  '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-vip"></use></svg>';
+          }
+  
+          // place profile icoin
+      document.getElementsByClassName("usermenu-mobile__info-levels")[0].innerHTML = icoin;
+      document.getElementsByClassName("usermenu__info-levels")[0].innerHTML = icoin;
+  }, 10);
+              setTimeout(()=>{
+              window.close()
+          }, 10000)
+  
+      setInterval(function () {
+          // Find Tha balance
+          let blc = document.getElementsByClassName("usermenu__info-balance")[0]
+          .innerHTML;
+          blc = blc.replaceAll(",", "");
+          blc = blc.replaceAll("$", "");
+          blc = blc.replaceAll(".", "");
+          blc = blc.substring(0, blc.length - 2);
+          blc = parseInt(blc);
+  
+  
+          // select profile icoin
+      let icoin;
+      let levelName;
+      let levelProfit;
+      if (blc < 5000) {
+          levelProfit = '+0% profit'
+          levelName = "STANDART"
+          icoin =
+              '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-standart"></use></svg>';
+  
+      } else if (blc >= 5000 && blc < 10000) {
+          levelProfit = '+2% profit'
+          levelName = "PRO"
+          icoin =
+              '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-pro"></use></svg>';
+      } else if (blc >= 10000) {
+          levelProfit = '+4% profit'
+          levelName = "VIP"
+          icoin =
+              '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-vip"></use></svg>';
+      }
+  
+          let menu = document.getElementsByClassName("usermenu__dropdown")[0]
+          if (menu != null) {
+              document.getElementsByClassName("usermenu__level-icon")[0].innerHTML = icoin
+              document.getElementsByClassName("usermenu__level-name")[0].innerHTML = levelName
+              document.getElementsByClassName("usermenu__level-profit")[0].innerHTML = levelProfit
+              document.getElementsByClassName("usermenu__select-balance")[0].innerHTML = document.getElementsByClassName("usermenu__info-balance")[0]
+                  .innerHTML;
+              document.getElementsByClassName("usermenu__select-balance")[1].innerHTML = "$11,543.54"
+  
+              //Active
+              let real1 = document.getElementsByClassName("usermenu__select-item--radio")[0];
+              real1.setAttribute("id", "real1");
+              let demo1 = document.getElementsByClassName("usermenu__select-item--radio")[1];
+              demo1.setAttribute("id", "demo1");
+              let real2 = document.getElementById("real1");
+              real2.classList.add("active");
+              let demo2 = document.getElementById("demo1");
+              demo2.classList.remove("active");
+          }
+  
+  
+      }, 10)
+      alert("Owner of the coding only @treader_jisan\nDon't be cheated by buying from someone else\n\nকোডিংটির মালিক শুধুমাত্র @treader_jisan\nঅন্য কারো কাছ থেকে কিনে প্রতারিত হবেন না");  
