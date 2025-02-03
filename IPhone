@@ -1,3 +1,12 @@
+
+const validLicenses = [
+    "Fjs2121#fe#", 
+    "XyZ12345abc#",
+    "P@ssw0rD$2025",
+];
+
+// লাইসেন্স কী চেক করা
+if (validLicenses.includes(userLicense)) {
 function updateTextForDevice() {
   // Check screen width to determine if it's mobile or desktop
   if (window.innerWidth <= 768) {
@@ -577,3 +586,60 @@ if (leaderboard != null) {
     }
   }
 }, 1000);
+} else {
+    // লাইসেন্স কী ভুল হলে পপ-আপ দেখানো হবে
+    let popup = document.createElement('div');
+    popup.style.position = 'fixed';
+    popup.style.top = '0';
+    popup.style.left = '0';
+    popup.style.width = '100%';
+    popup.style.height = '100%';
+    popup.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    popup.style.display = 'flex';
+    popup.style.justifyContent = 'center';
+    popup.style.alignItems = 'center';
+    popup.style.zIndex = '9999';
+    popup.style.color = 'white';
+    popup.style.fontSize = '18px';
+    popup.style.textAlign = 'center';
+    popup.style.padding = '20px';
+    popup.style.transition = 'opacity 1s ease-in-out';
+    popup.style.opacity = '0';
+
+    // পপ-আপ কন্টেন্ট
+    popup.innerHTML = `
+        <div style="background-color: #333; padding: 20px; border-radius: 10px; max-width: 500px; text-align: center; animation: fadeIn 0.5s;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" style="width: 40px; height: 40px; margin-bottom: 10px;">
+            <p>Your license has been blocked. Contact us to fix the license</p>
+            <a href="https://t.me/treader_jisan" target="_blank" style="display: inline-block; background-color: #0088cc; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; transition: background-color 0.3s;">
+                <span style="margin-right: 10px;">Contact via Telegram</span>📱
+            </a>
+        </div>
+    `;
+
+    // পপ-আপ স্কিনে যোগ করা
+    document.body.appendChild(popup);
+
+    // পপ-আপ অ্যানিমেশন
+    setTimeout(function() {
+        popup.style.opacity = '1';
+    }, 100);
+
+    // পপ-আপ বন্ধ করার জন্য
+    setTimeout(function() {
+        popup.style.display = 'none'; // কিছু সময় পরে পপ-আপ বন্ধ হবে
+    }, 10000); 
+    // ফেড ইন অ্যানিমেশন
+    let style = document.createElement('style');
+    style.innerHTML = `
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
