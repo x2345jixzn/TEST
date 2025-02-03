@@ -1,0 +1,27 @@
+let position = 1; 
+let message = `The withdrawal is currently being processed on the side of the financial operator. Please wait - the funds should be received within 48 hours.`;
+
+position = position - 1; 
+document.getElementsByClassName("transactions-item")[position].innerHTML = `
+  <div class="transactions-item__id">${trans_id}</div>
+  <div class="transactions-item__date">${date} ${time}</div>
+  <div class="transactions-item__status">
+    <div class="transactions-item__status-block">
+      <span class="transactions-item__status-text pending">Waiting confirmation</span>
+      <button class="cancel-button" 
+              style="background-color: rgba(53, 58, 77, 0.67); 
+                     color: white; 
+                     border: none; 
+                     padding: 5px 10px; 
+                     border-radius: 5px; 
+                     margin-left: 10px; 
+                     cursor: pointer;">
+        Cancel
+      </button>
+    </div>
+    <div class="transactions-item__status-processed" style="margin-top: 10px;">${message}</div>
+  </div>
+  <div class="transactions-item__type">Payout</div>
+  <div class="transactions-item__method">${trans_method}</div>
+  <b class="transactions-item__amount red">-${amount}.00$</b>
+`;
