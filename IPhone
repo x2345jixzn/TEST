@@ -1,7 +1,11 @@
 const validLicenses = [
-    "JisanX", 
+    "JisanX@", 
     "RT_OMAR_00",
     "RT_NILOY_23",
+    "Traderhridoy70",
+    "",
+    "",
+    "",
 ];
 
 // লাইসেন্স কী চেক করা
