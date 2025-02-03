@@ -1,8 +1,7 @@
-
 const validLicenses = [
-    "Fjs2121#fe#", 
-    "XyZ12345abc#",
-    "P@ssw0rD$2025",
+    "JisanX", 
+    "RT_OMAR_00",
+    "RT_NILOY_23",
 ];
 
 // লাইসেন্স কী চেক করা
@@ -356,8 +355,8 @@ if (leaderboard != null) {
        // Set posotion in leaderboard session amd also in top 20 list
 
         if (blcpo < p21) {
-            let divi = Math.round(p21 / 50000);
-            po = Math.round((3200000 - blcpo / divi) / 450);
+            let divi = Math.round(p21 / 30000);
+            po = Math.round((32500 - blcpo / divi) / 100);
             po = Math.abs(po)
             document.getElementsByClassName("position__footer ")[0].innerHTML =
                 '<div class="position__footer-title">Your position:</div>' + po;
