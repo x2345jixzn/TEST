@@ -28,15 +28,10 @@
   }, 2000); // 2 সেকেন্ড পর
 })();
 (function() {
-  // ১. URL পরিবর্তন (যদি "demo-quick-high-low" থাকে, তাহলে নতুন URL-এ পরিবর্তন করুন)
-  if (window.location.href.indexOf("demo-quick-high-low") !== -1) {
-    history.replaceState(null, "", "https://pocketoption.com/en/cabinet/quick-high-low/USD/");
-  }
-  
-  // ২. পেজের শিরোনাম (টাইটেল) পরিবর্তন
+  // ১. পেজের শিরোনাম (টাইটেল) পরিবর্তন
   document.title = "Quick Trading Real Account | Pocket Option";
 
-  // ৩. Tooltip টেক্সট পরিবর্তন: Beginner → Guru
+  // ২. Tooltip টেক্সট পরিবর্তন: Beginner → Guru
   const tooltips = document.querySelectorAll('.tooltip-text');
   tooltips.forEach(tooltip => {
     if (tooltip.textContent.trim() === 'Beginner') {
@@ -44,7 +39,7 @@
     }
   });
 
-  // ৪. প্রোফাইল ব্যাকগ্রাউন্ড সার্কেলের রঙ পরিবর্তন: #32AC41 → #d2a52b
+  // ৩. প্রোফাইল ব্যাকগ্রাউন্ড সার্কেলের রঙ পরিবর্তন: #32AC41 → #d2a52b
   const profilePaths = document.querySelectorAll('.profile-level svg path');
   profilePaths.forEach(path => {
     const fillColor = path.getAttribute('fill');
@@ -53,7 +48,7 @@
     }
   });
 
-  // ৫. .balance-info-block__label এলিমেন্টে "QT Demo" লেখা থাকলে সেটিকে "QT Real" তে পরিবর্তন করা
+  // ৪. .balance-info-block__label এলিমেন্টে "QT Demo" লেখা থাকলে সেটিকে "QT Real" তে পরিবর্তন করা
   const labels = document.querySelectorAll('.balance-info-block__label');
   labels.forEach(label => {
     label.textContent = label.textContent.replace('QT Demo', 'QT Real');
