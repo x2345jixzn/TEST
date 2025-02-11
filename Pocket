@@ -1,0 +1,61 @@
+(function() {
+  // HTML পপআপ তৈরি করা
+  const popup = document.createElement('div');
+  popup.innerText = 'Owner Only Jisan X';
+  popup.style.position = 'fixed';
+  popup.style.top = '50%';
+  popup.style.left = '50%';
+  popup.style.transform = 'translate(-50%, -50%)';
+  popup.style.backgroundColor = '#000';
+  popup.style.color = '#fff';
+  popup.style.fontSize = '20px';
+  popup.style.padding = '20px';
+  popup.style.borderRadius = '10px';
+  popup.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+  popup.style.zIndex = '9999';
+  popup.style.opacity = '1';
+  popup.style.transition = 'opacity 0.5s ease';
+
+  // পপআপটি পেজে অ্যাড করা
+  document.body.appendChild(popup);
+
+  // 2 সেকেন্ড পরে পপআপটি ডিসপ্লে থেকে সরিয়ে ফেলা হবে
+  setTimeout(() => {
+    popup.style.opacity = '0'; // পপআপটিকে ধীরে ধীরে অপাসিটি করে মুছে ফেলা
+    setTimeout(() => {
+      document.body.removeChild(popup); // পপআপ এলিমেন্টটি সরানো
+    }, 500); // 0.5 সেকেন্ড পর
+  }, 2000); // 2 সেকেন্ড পর
+})();
+(function() {
+  // ১. URL পরিবর্তন (যদি "demo-quick-high-low" থাকে, তাহলে নতুন URL-এ পরিবর্তন করুন)
+  if (window.location.href.indexOf("demo-quick-high-low") !== -1) {
+    history.replaceState(null, "", "https://pocketoption.com/en/cabinet/quick-high-low/USD/");
+  }
+  
+  // ২. পেজের শিরোনাম (টাইটেল) পরিবর্তন
+  document.title = "Quick Trading Real Account | Pocket Option";
+
+  // ৩. Tooltip টেক্সট পরিবর্তন: Beginner → Guru
+  const tooltips = document.querySelectorAll('.tooltip-text');
+  tooltips.forEach(tooltip => {
+    if (tooltip.textContent.trim() === 'Beginner') {
+      tooltip.textContent = 'Guru';
+    }
+  });
+
+  // ৪. প্রোফাইল ব্যাকগ্রাউন্ড সার্কেলের রঙ পরিবর্তন: #32AC41 → #d2a52b
+  const profilePaths = document.querySelectorAll('.profile-level svg path');
+  profilePaths.forEach(path => {
+    const fillColor = path.getAttribute('fill');
+    if (fillColor && fillColor.toLowerCase() === '#32ac41') {
+      path.setAttribute('fill', '#d2a52b');
+    }
+  });
+
+  // ৫. .balance-info-block__label এলিমেন্টে "QT Demo" লেখা থাকলে সেটিকে "QT Real" তে পরিবর্তন করা
+  const labels = document.querySelectorAll('.balance-info-block__label');
+  labels.forEach(label => {
+    label.textContent = label.textContent.replace('QT Demo', 'QT Real');
+  });
+})();
