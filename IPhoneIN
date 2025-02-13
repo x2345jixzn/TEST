@@ -147,7 +147,7 @@ window.addEventListener("resize", updateTextForDevice);
         // **লসের জন্য পার্সেন্টেজ ক্যালকুলেশন**  
         if (isLoss) {
           if (lossAmount <= 20) loadingWidth = 70;
-          else if (lossAmount >= 2000) loadingWidth = 0;
+          else if (lossAmount >= 2000) loadingWidth = 3;
           else if (lossAmount >= 1800) loadingWidth = 10;
           else if (lossAmount >= 1700) loadingWidth = 15;
           else if (lossAmount >= 1400) loadingWidth = 20;
