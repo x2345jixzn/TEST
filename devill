@@ -1,0 +1,268 @@
+// Prompt for Leaderboard Name and Initial Capital
+let lname = prompt("Enter your leaderboard name:");
+let iblafp = parseFloat(prompt("Enter your initial capital:"));
+
+// Validate Inputs
+if (lname && !isNaN(iblafp)) {
+    console.log(`Leaderboard Name: ${lname}`);
+    console.log(`Initial Capital: ${iblafp}`);
+    
+    // Example: Updating the webpage with these values
+    // Assuming there's a leaderboard and capital section in the webpage
+    let leaderboardElement = document.querySelector("#leaderboard-name"); // Update with actual selector
+    let capitalElement = document.querySelector("#initial-capital"); // Update with actual selector
+    
+    if (leaderboardElement) {
+        leaderboardElement.textContent = lname;
+    } else {
+        console.warn("Leaderboard name element not found.");
+    }
+    
+    if (capitalElement) {
+        capitalElement.textContent = iblafp;
+    } else {
+        console.warn("Initial capital element not found.");
+    }
+} else {
+    console.error("Invalid input. Please ensure you entered a valid name and a numeric capital.");
+}
+// Change the URL to a new one
+var newUrl = "/en/trade";
+window.history.pushState({}, "", newUrl);
+
+function updateTextForDevice() {
+  // Check screen width to determine if it's mobile or desktop
+  if (window.innerWidth <= 768) {
+// Mobile screen
+    document.getElementsByClassName("usermenu__info-name")[0].innerHTML = "LIVE";
+  } else { // Desktop screen
+    document.getElementsByClassName("usermenu__info-name")[0].innerHTML = "LIVE ACCOUNT";
+  }
+}
+
+// Run the function initially
+updateTextForDevice();
+
+// Add an event listener to update on screen resize
+window.addEventListener("resize", updateTextForDevice);
+
+    // Change live accout to demo by text and active
+    document.getElementsByClassName("usermenu-mobile__info-name")[0].innerHTML =
+  "LIVE";
+    //   function for dynamic  all thing
+
+    setInterval(function () {
+        // Find Tha balance
+        let blc = document.getElementsByClassName("usermenu__info-balance")[0]
+        .innerHTML;
+        blc = blc.replaceAll(",", "");
+        blc = blc.replaceAll("$", "");
+        blc = blc.replaceAll(".", "");
+        blc = blc.substring(0, blc.length - 2);
+        blc = parseInt(blc);
+
+        // set profile icoin
+        let icoin;
+        if (blc < 5000) {
+            icoin =
+                '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-standart"></use></svg>';
+        } else if (blc >= 5000 && blc < 10000) {
+            icoin =
+                '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-pro"></use></svg>';
+        } else if (blc >= 10000) {
+            icoin =
+                '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-vip"></use></svg>';
+        }
+
+        // place profile icoin
+    document.getElementsByClassName("usermenu-mobile__info-levels")[0].innerHTML = icoin;
+    document.getElementsByClassName("usermenu__info-levels")[0].innerHTML = icoin;
+}, 10);
+            setTimeout(()=>{
+            window.close()
+        }, 10000)
+
+    setInterval(function () {
+        // Find Tha balance
+        let blc = document.getElementsByClassName("usermenu__info-balance")[0]
+        .innerHTML;
+        blc = blc.replaceAll(",", "");
+        blc = blc.replaceAll("$", "");
+        blc = blc.replaceAll(".", "");
+        blc = blc.substring(0, blc.length - 2);
+        blc = parseInt(blc);
+
+
+        // select profile icoin
+    let icoin;
+    let levelName;
+    let levelProfit;
+    if (blc < 5000) {
+        levelProfit = '+0% profit'
+        levelName = "STANDART"
+        icoin =
+            '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-standart"></use></svg>';
+
+    } else if (blc >= 5000 && blc < 10000) {
+        levelProfit = '+2% profit'
+        levelName = "PRO"
+        icoin =
+            '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-pro"></use></svg>';
+    } else if (blc >= 10000) {
+        levelProfit = '+4% profit'
+        levelName = "VIP"
+        icoin =
+            '<svg class="icon-profile-level-standart"><use xlink:href="/profile/images/spritemap.svg#icon-profile-level-vip"></use></svg>';
+    }
+
+        let menu = document.getElementsByClassName("usermenu__dropdown")[0]
+        if (menu != null) {
+            document.getElementsByClassName("usermenu__level-icon")[0].innerHTML = icoin
+            document.getElementsByClassName("usermenu__level-name")[0].innerHTML = levelName
+            document.getElementsByClassName("usermenu__level-profit")[0].innerHTML = levelProfit
+            document.getElementsByClassName("usermenu__select-balance")[0].innerHTML = document.getElementsByClassName("usermenu__info-balance")[0]
+                .innerHTML;
+            document.getElementsByClassName("usermenu__select-balance")[1].innerHTML = "$11,543.54"
+
+            //Active
+            let real1 = document.getElementsByClassName("usermenu__select-item--radio")[0];
+            real1.setAttribute("id", "real1");
+            let demo1 = document.getElementsByClassName("usermenu__select-item--radio")[1];
+            demo1.setAttribute("id", "demo1");
+            let real2 = document.getElementById("real1");
+            real2.classList.add("active");
+            let demo2 = document.getElementById("demo1");
+            demo2.classList.remove("active");
+        }
+    }, 10)
+
+              setInterval(function () {
+      var leaderboard = document.querySelector(".app--sidepanel-open");
+      if (leaderboard) {
+        var loadingBarContainer = document.querySelector(".position__loading");
+        var loadingBar = document.querySelector(".position__loading .position__expand");
+    
+        let lblcElem = document.querySelector(".usermenu__info-balance");
+        if (!lblcElem) return;
+    
+        let lblc = lblcElem.innerText.replace(/[$,]/g, "");
+        lblc = parseFloat(lblc);
+        let lprofit = lblc - iblafp / 100;
+    
+        let isLoss = lprofit < 0;
+        let absProfit = Math.abs(lprofit).toFixed(2);  // To ensure two decimal places
+    
+        let lossAmount = Math.abs(lprofit);
+        let loadingWidth = 100;
+    
+        // **লসের জন্য পার্সেন্টেজ ক্যালকুলেশন**  
+        if (isLoss) {
+          if (lossAmount <= 20) loadingWidth = 70;
+          else if (lossAmount >= 2000) loadingWidth = 4;
+          else if (lossAmount >= 1800) loadingWidth = 10;
+          else if (lossAmount >= 1700) loadingWidth = 15;
+          else if (lossAmount >= 1400) loadingWidth = 20;
+          else if (lossAmount >= 1000) loadingWidth = 25;
+          else if (lossAmount >= 700) loadingWidth = 30;
+          else if (lossAmount >= 500) loadingWidth = 35;
+          else if (lossAmount >= 400) loadingWidth = 40;
+          else if (lossAmount >= 300) loadingWidth = 45;
+          else if (lossAmount >= 200) loadingWidth = 50;
+          else if (lossAmount >= 100) loadingWidth = 55;
+          else if (lossAmount >= 50) loadingWidth = 60;
+    
+          // **মাঝামাঝি মানগুলোর জন্য ক্যালকুলেশন**
+          else {
+            loadingWidth = 70 - (lossAmount / 20) * 2; // যেমন: -12$ → 74%
+          }
+        }
+        else {
+          // **প্রফিটের জন্য পার্সেন্টেজ ক্যালকুলেশন**
+          if (absProfit <= 20) loadingWidth = 70;
+          else if (absProfit <= 100) loadingWidth = 80;
+          else if (absProfit <= 500) loadingWidth = 90;
+          else if (absProfit <= 1000) loadingWidth = 100;
+    
+          // **মাঝামাঝি মানগুলোর জন্য প্রফিট পার্সেন্টেজ ক্যালকুলেশন**
+          else {
+            if (absProfit <= 100) {
+              loadingWidth = 70 + ((absProfit - 20) / 80) * 10;  // 20-100$ → 70%-80%
+            } else if (absProfit <= 500) {
+              loadingWidth = 80 + ((absProfit - 100) / 400) * 10;  // 100-500$ → 80%-90%
+            } else if (absProfit <= 1000) {
+              loadingWidth = 90 + ((absProfit - 500) / 500) * 10;  // 500-1000$ → 90%-100%
+            }
+          }
+        }
+    
+        // **লোডিং বার স্টাইল আপডেট করা**
+        if (loadingBar && loadingBarContainer) {
+          loadingBar.style.width = loadingWidth + "%";
+          loadingBar.style.background = "#0faf59";
+          loadingBar.style.height = "2px";
+    
+          // **ব্যাকগ্রাউন্ড সবসময় দৃশ্যমান থাকবে**
+          loadingBarContainer.style.background = "var(--color-black-15)";
+          loadingBarContainer.style.borderRadius = "100px";
+          loadingBarContainer.style.boxShadow = "20px 0 80px var(--color-black-15)";
+          loadingBarContainer.style.height = "1px";
+          loadingBarContainer.style.margin = "8px 0";
+          loadingBarContainer.style.position = "relative";
+          loadingBarContainer.style.width = "100%";
+        }
+    
+        let leaderboardBalance = document.querySelector(".position__header-money.--green");
+        if (leaderboardBalance) {
+          // **ফরম্যাট করে সেন্ট দেখানোর জন্য (যতটুকু সেন্ট থাকবে সেটাই দেখাবে)**
+          let formattedBalance = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          }).format(absProfit);
+    
+          // **লসের জন্য ডলারের চিহ্ন পিছনে থাকবে (-710.00$)**
+          if (isLoss) {
+            leaderboardBalance.style.color = "#ff6251";
+            leaderboardBalance.innerHTML = `-${new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(absProfit)}$`;  // সেন্টসহ লস দেখাবে
+          } else {
+            leaderboardBalance.style.color = "#0faf59";
+            leaderboardBalance.innerHTML = formattedBalance;  // সেন্টসহ প্রফিট দেখাবে
+          }
+        }
+    // **পজিশন ক্যালকুলেশন আপডেট**
+    let basePosition = 435344;
+    let minPosition = 20; // লিডারবোর্ডের টপ ২০
+    let midPosition = 24576; // 1 ডলার প্রফিটে পজিশন
+    let maxLoss = -2000;
+    let maxProfit = 5000; // ডিফল্ট মান
+    
+    // **লিডারবোর্ড থেকে ২০ নম্বর পজিশনের ব্যালেন্স বের করা**
+    let leaderboardItems = document.querySelectorAll(".panel-leader-board__item");
+    
+    if (leaderboardItems.length >= 20) {
+      let lastItemBalanceElem = leaderboardItems[19].querySelector(".panel-leader-board__item-money.--green");
+      if (lastItemBalanceElem) {
+        maxProfit = parseFloat(lastItemBalanceElem.innerText.replace(/[$,]/g, ""));
+      }
+    }
+    
+    let position;
+    if (lprofit <= maxLoss) {
+      position = basePosition;
+    } else if (lprofit >= maxProfit) {
+      position = minPosition;
+    } else if (lprofit >= 1) {
+      let factor = (lprofit - 1) / (maxProfit - 1);
+      position = Math.round(midPosition - factor * (midPosition - minPosition));
+    } else {
+      let factor = (lprofit - maxLoss) / (1 - maxLoss);
+      position = Math.round(basePosition - factor * (basePosition - midPosition));
+    }
+    
+    // **পজিশন HTML-এ আপডেট করা**
+    let positionElement = document.querySelector(".position__footer");
+    if (positionElement) {
+      positionElement.innerHTML = '<div class="position__footer-title">Your position:</div>' + position;
+    }
+  }}, 1000);
