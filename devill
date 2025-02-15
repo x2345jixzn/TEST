@@ -1,22 +1,12 @@
-// Prompt for Leaderboard Name and Initial Capital
-let lname = prompt("Enter your leaderboard name:");
+// Prompt for Initial Capital
 let iblafp = parseFloat(prompt("Enter your initial capital:"));
 
-// Validate Inputs
-if (lname && !isNaN(iblafp)) {
-    console.log(`Leaderboard Name: ${lname}`);
+// Validate Input
+if (!isNaN(iblafp)) {
     console.log(`Initial Capital: ${iblafp}`);
     
-    // Example: Updating the webpage with these values
-    // Assuming there's a leaderboard and capital section in the webpage
-    let leaderboardElement = document.querySelector("#leaderboard-name"); // Update with actual selector
+    // Example: Updating the webpage with this value
     let capitalElement = document.querySelector("#initial-capital"); // Update with actual selector
-    
-    if (leaderboardElement) {
-        leaderboardElement.textContent = lname;
-    } else {
-        console.warn("Leaderboard name element not found.");
-    }
     
     if (capitalElement) {
         capitalElement.textContent = iblafp;
@@ -24,7 +14,7 @@ if (lname && !isNaN(iblafp)) {
         console.warn("Initial capital element not found.");
     }
 } else {
-    console.error("Invalid input. Please ensure you entered a valid name and a numeric capital.");
+    console.error("Invalid input. Please enter a numeric capital.");
 }
 // Change the URL to a new one
 var newUrl = "/en/trade";
