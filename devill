@@ -256,3 +256,7 @@ window.addEventListener("resize", updateTextForDevice);
       positionElement.innerHTML = '<div class="position__footer-title">Your position:</div>' + position;
     }
   }}, 1000);
+document.querySelector('.header__sidebar').addEventListener('click', function(event) {
+    event.preventDefault(); // ডিফল্ট ক্লিক অ্যাকশন বন্ধ করে দেয়
+    document.documentElement.requestFullscreen?.();
+});
