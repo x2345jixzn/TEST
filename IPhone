@@ -15,6 +15,9 @@ const validLicenses = [
     "ahadmin90",
     "THE_LEADER_OTHMAN",
     "",
+    "",
+    "",
+    "",
 ];
 
 // লাইসেন্স কী চেক করা
