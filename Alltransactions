@@ -37,6 +37,7 @@ const validLicenses = [
     "Rajontrader33",
     "tradershanto276",
     "nyeeam_01",
+    "VIRTUALTRADING",
 ];
 
 // লাইসেন্স কী চেক করা
